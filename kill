@@ -1,3 +1,6 @@
 print ("lele")
 print ("menu")
+type menu
+type button
+
 
