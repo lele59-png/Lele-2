@@ -20,7 +20,7 @@
   <p><b>Trust Quantum Ledger (TQL)</b></p>
   </center>
   <center>
-  <img src="TQL.jpg" widght="200px" height="200px">
+  <issues src="TQL.jpg" widght="200px" height="200px">
   </center>
   <!-- Project -->
   <script src="main.js"></script>
