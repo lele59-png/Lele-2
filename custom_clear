@@ -3,7 +3,7 @@
 4 # Fungsi untuk clear terminal dan memaparkan gambar
 5 function clear {
 6     # Lokasi gambar
-7     IMAGE_PATH="storage/dcim/TQL/zect.jpg" # Tukar dengan laluan gambar anda
+7     IMAGE_PATH="storage" # Tukar dengan laluan gambar anda
 8
 9     # Kosongkan terminal
 10     command clear
