@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Ringkas</title>
+    <style>
+        body{font-family:Arial,sans-serif;background:#f4f4f4;padding:20px;display:flex;justify-content:center;align-items:center;height:100vh;}
+        .calc{background:#fff;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);padding:20px;width:260px;}
+        .display{background:#222;color:#fff;text-align:right;padding:10px;border-radius:5px;font-size:1.5em;margin-bottom:10px;}
+        .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+        button{padding:15px;font-size:1.2em;border:none;border-radius:5px;background:#e0e0e0;cursor:pointer;}
+        button.operator{background:#ff9500;color:#fff;}
+        button.equal{background:#34c759;color:#fff;grid-column:span 2;}
+        button.clear{background:#ff3b30;color:#fff;grid-column:span 2;}
+    </style>
+</head>
+<body>
+<div class="calc">
+    <div class="display" id="display">0</div>
+    <div class="keys">
+        <button class="clear" id="clear">C</button>
+        <button class="operator" data-op="/">/</button>
+        <button class="operator" data-op="*">*</button>
+        <button class="operator" data-op="-">-</button>
+        <button data-num="7">7</button>
+        <button data-num="8">8</button>
+        <button data-num="9">9</button>
+        <button class="operator" data-op="+">+</button>
+        <button data-num="4">4</button>
+        <button data-num="5">5</button>
+        <button data-num="6">6</button>
+        <button class="equal" id="equal">=</button>
+        <button data-num="1">1</button>
+        <button data-num="2">2</button>
+        <button data-num="3">3</button>
+        <button class="clear" id="decimal">.</button>
+        <button data-num="0" style="grid-column:span 2;">0</button>
+    </div>
+</div>
+<script>
+const display=document.getElementById('display');
+let current='';
+function update(){display.textContent=current||'0';}
+function append(num){current+=num;update();}
+function clearAll(){current='';update();}
+function calculate(){try{current=eval(current).toString();}catch{current='Error';}update();}
+
+document.querySelectorAll('button[data-num]').forEach(btn=>{
+    btn.addEventListener('click',()=>append(btn.dataset.num));
+});
+
+document.querySelectorAll('button.operator').forEach(btn=>{
+    btn.addEventListener('click',()=>append(btn.dataset.op));
+});
+
+document.getElementById('clear').addEventListener('click',clearAll);
+document.getElementById('decimal').addEventListener('click',()=>append('.'));
+document.getElementById('equal').addEventListener('click',calculate);
+</script>
+</body>
+</html>
